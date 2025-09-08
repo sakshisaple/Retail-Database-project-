@@ -1,0 +1,51 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+Table Customers {
+  C_id integer [primary key]
+  CUST_NAME VARCHAR(20) UNIQUE
+  CUST_MAIL VARCHAR(20)
+  CUST_NUM VARCHAR(10) 
+  CUST_LOC VARCHAR(15)
+}
+
+Table Products {
+  P_id integer [primary key]
+  P_name varchar(20)
+  P_price integer
+  P_quantity integer
+}
+
+Table Orders {
+  Order_id integer [primary key]
+  C_id interger
+  order_date date
+  Order_total integer
+  0rder_status varchar(10)
+  order_quantity int
+  P_id int
+}
+Table Payment{
+  Payment_id integer
+  C_id integer 
+  Order_id integer
+  Payment_status varchar(10)
+  Payment_date date
+  Payment_method varchar(10)
+  Amount integer
+  }
+table shipping{
+  Shipping_id integer
+  orderid integer
+  shiping_address varchar(20)
+  shipping_date date
+  delivery status 
+}
+Ref: shipping.Shipping_id-Orders.Order_id
+
+Ref: Orders.Order_id< Products.P_id
+REF:Customers.C_id<Payment.C_id
+
+Ref: Customers.C_id< Orders.Order_id
+ref: Orders.Order_id-Payment.Payment_id
+ref: Products.P_id- Payment.Payment_id
